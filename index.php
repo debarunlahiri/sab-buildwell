@@ -780,7 +780,7 @@
             </div>
             
             <div class="scroll-reveal">
-                <form class="glass-dark p-8 lg:p-10 border border-white/10" action="contact.php" method="POST">
+                <form class="glass-dark p-8 lg:p-10 border border-white/10" action="send_mail.php" method="POST">
                     <h3 class="font-playfair text-2xl font-bold mb-6">Send us a Message</h3>
                     
                     <div class="grid md:grid-cols-2 gap-6 mb-6">

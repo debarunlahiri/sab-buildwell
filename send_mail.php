@@ -96,7 +96,7 @@
             
             <!-- Contact Form -->
             <div class="scroll-reveal">
-                <form class="bg-white p-10 lg:p-12 shadow-2xl border border-gray-100" action="send_mail.php" method="POST">
+                <form class="bg-white p-10 lg:p-12 shadow-2xl border border-gray-100" action="contact.php" method="POST">
                     <h3 class="font-playfair text-2xl font-bold text-sb-charcoal mb-2">Send us a Message</h3>
                     <p class="text-gray-500 text-sm mb-8">Fill in the details below and we'll get back to you within 24 hours.</p>
                     

@@ -30,10 +30,13 @@
             <div>
                 <h4 class="font-playfair text-lg mb-6 text-sb-gold">Quick Links</h4>
                 <ul class="space-y-3">
-                    <li><a href="#about" class="text-gray-400 hover:text-white transition-colors text-sm">About Us</a></li>
-                    <li><a href="#workflow" class="text-gray-400 hover:text-white transition-colors text-sm">Our Process</a></li>
-                    <li><a href="#commercial" class="text-gray-400 hover:text-white transition-colors text-sm">Commercial</a></li>
-                    <li><a href="#showcase" class="text-gray-400 hover:text-white transition-colors text-sm">Showcase</a></li>
+                    <li><a href="about.php" class="text-gray-400 hover:text-white transition-colors text-sm">About Us</a></li>
+                    <li><a href="services.php" class="text-gray-400 hover:text-white transition-colors text-sm">Our Services</a></li>
+                    <li><a href="commercial.php" class="text-gray-400 hover:text-white transition-colors text-sm">Commercial</a></li>
+                    <li><a href="residential.php" class="text-gray-400 hover:text-white transition-colors text-sm">Residential</a></li>
+                    <li><a href="transformations.php" class="text-gray-400 hover:text-white transition-colors text-sm">Transformations</a></li>
+                    <li><a href="portfolio.php" class="text-gray-400 hover:text-white transition-colors text-sm">Portfolio</a></li>
+                    <li><a href="contact.php" class="text-gray-400 hover:text-white transition-colors text-sm">Contact</a></li>
                 </ul>
             </div>
             
