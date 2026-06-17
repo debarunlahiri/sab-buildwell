@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Shared document head. All PHP pages include this before navbar/content. -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAB Buildwell Projects | Turnkey Office & Architecture</title>

@@ -1,4 +1,4 @@
-<!-- Footer -->
+<!-- Shared footer. Also owns global script loading for every page. -->
 <footer class="bg-sb-black text-white py-16">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
@@ -14,14 +14,14 @@
                     Premier full-service interior design and turnkey execution firm. Transforming complex architectural blueprints into breathtaking, functional realities.
                 </p>
                 <div class="flex space-x-4">
-                    <a href="#" class="w-10 h-10 border border-white/20 flex items-center justify-center hover:border-sb-gold hover:text-sb-gold transition-all">
-                        <i data-lucide="facebook" class="w-4 h-4"></i>
+                    <a href="#" aria-label="Facebook" class="w-10 h-10 border border-white/20 text-gray-400 flex items-center justify-center hover:border-sb-gold hover:text-sb-gold transition-all">
+                        <i data-lucide="thumbs-up" class="w-4 h-4"></i>
                     </a>
-                    <a href="#" class="w-10 h-10 border border-white/20 flex items-center justify-center hover:border-sb-gold hover:text-sb-gold transition-all">
-                        <i data-lucide="instagram" class="w-4 h-4"></i>
+                    <a href="#" aria-label="Instagram" class="w-10 h-10 border border-white/20 text-gray-400 flex items-center justify-center hover:border-sb-gold hover:text-sb-gold transition-all">
+                        <i data-lucide="camera" class="w-4 h-4"></i>
                     </a>
-                    <a href="#" class="w-10 h-10 border border-white/20 flex items-center justify-center hover:border-sb-gold hover:text-sb-gold transition-all">
-                        <i data-lucide="linkedin" class="w-4 h-4"></i>
+                    <a href="#" aria-label="LinkedIn" class="w-10 h-10 border border-white/20 text-gray-400 flex items-center justify-center hover:border-sb-gold hover:text-sb-gold transition-all">
+                        <i data-lucide="briefcase-business" class="w-4 h-4"></i>
                     </a>
                 </div>
             </div>
@@ -32,10 +32,14 @@
                 <ul class="space-y-3">
                     <li><a href="about.php" class="text-gray-400 hover:text-white transition-colors text-sm">About Us</a></li>
                     <li><a href="services.php" class="text-gray-400 hover:text-white transition-colors text-sm">Our Services</a></li>
-                    <li><a href="commercial.php" class="text-gray-400 hover:text-white transition-colors text-sm">Commercial</a></li>
-                    <li><a href="residential.php" class="text-gray-400 hover:text-white transition-colors text-sm">Residential</a></li>
-                    <li><a href="transformations.php" class="text-gray-400 hover:text-white transition-colors text-sm">Transformations</a></li>
+                    <li><a href="home-interior-design.php" class="text-gray-400 hover:text-white transition-colors text-sm">Home Interior Design</a></li>
+                    <li><a href="residential.php" class="text-gray-400 hover:text-white transition-colors text-sm">Residential Interior Design</a></li>
+                    <li><a href="commercial.php" class="text-gray-400 hover:text-white transition-colors text-sm">Commercial Interior Design</a></li>
                     <li><a href="portfolio.php" class="text-gray-400 hover:text-white transition-colors text-sm">Portfolio</a></li>
+                    <li><a href="projects.php" class="text-gray-400 hover:text-white transition-colors text-sm">Projects</a></li>
+                    <li><a href="locations.php" class="text-gray-400 hover:text-white transition-colors text-sm">Locations</a></li>
+                    <li><a href="blog.php" class="text-gray-400 hover:text-white transition-colors text-sm">Blog</a></li>
+                    <li><a href="faqs.php" class="text-gray-400 hover:text-white transition-colors text-sm">FAQs</a></li>
                     <li><a href="contact.php" class="text-gray-400 hover:text-white transition-colors text-sm">Contact</a></li>
                 </ul>
             </div>
@@ -79,6 +83,9 @@
 </button>
 
 <!-- Scripts -->
+<script src="assets/js/three/scene.js"></script>
+<script src="assets/js/three/objects.js"></script>
+<script src="assets/js/three/animation.js"></script>
 <script src="assets/js/threejs-bg.js"></script>
 <script src="assets/js/main.js"></script>
 <script>

@@ -1,0 +1,336 @@
+/* ============================================
+   Section Dividers & Decorative Elements
+   ============================================ */
+.section-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, #c9a96e, transparent);
+    opacity: 0.3;
+}
+
+.gold-border {
+    position: relative;
+}
+
+.gold-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: #c9a96e;
+}
+
+/* Decorative corner accents */
+.corner-accent {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #c9a96e;
+    opacity: 0.5;
+}
+
+.corner-accent.tl {
+    top: 0;
+    left: 0;
+    border-right: none;
+    border-bottom: none;
+}
+
+.corner-accent.tr {
+    top: 0;
+    right: 0;
+    border-left: none;
+    border-bottom: none;
+}
+
+.corner-accent.bl {
+    bottom: 0;
+    left: 0;
+    border-right: none;
+    border-top: none;
+}
+
+.corner-accent.br {
+    bottom: 0;
+    right: 0;
+    border-left: none;
+    border-top: none;
+}
+
+/* ============================================
+   Stats Counter Animation
+   ============================================ */
+.stat-number {
+    display: inline-block;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ============================================
+   Card Hover Lift Effect
+   ============================================ */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   Noise Texture Overlay (Subtle)
+   ============================================ */
+.noise-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+}
+
+/* ============================================
+   Loading Screen
+   ============================================ */
+.loading-screen {
+    position: fixed;
+    inset: 0;
+    background: #0a0a0a;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loading-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 2px solid transparent;
+    border-top-color: #c9a96e;
+    border-right-color: #c9a96e;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ============================================
+   Custom Animations
+   ============================================ */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.float-animation {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes pulse-gold {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(201, 169, 110, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(201, 169, 110, 0);
+    }
+}
+
+.pulse-gold {
+    animation: pulse-gold 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.shimmer {
+    background: linear-gradient(90deg, transparent, rgba(201, 169, 110, 0.1), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+}
+
+@keyframes revealText {
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+.text-reveal {
+    animation: revealText 1s ease forwards;
+}
+
+/* ============================================
+   Interactive Service Cards
+   ============================================ */
+.service-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #c9a96e;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover::after {
+    transform: scaleX(1);
+}
+
+.service-card .service-icon {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+    transform: translateY(-5px);
+    color: #c9a96e;
+}
+
+/* ============================================
+   SVG Background Patterns
+   ============================================ */
+.svg-pattern {
+    position: absolute;
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+/* ============================================
+   Glassmorphism Effect
+   ============================================ */
+.glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-dark {
+    background: rgba(10, 10, 10, 0.5);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(201, 169, 110, 0.2);
+}
+
+/* ============================================
+   Grid Pattern Overlay
+   ============================================ */
+.grid-pattern {
+    background-image: 
+        linear-gradient(rgba(201, 169, 110, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201, 169, 110, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+/* ============================================
+   Workflow Timeline Styles
+   ============================================ */
+.workflow-step {
+    position: relative;
+}
+
+.workflow-card {
+    position: relative;
+    transition: transform 0.5s ease, box-shadow 0.5s ease, border-color 0.3s ease;
+}
+
+.workflow-card:hover {
+    transform: translateY(-5px);
+}
+
+.workflow-card .corner-accent {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #c9a96e;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.workflow-card:hover .corner-accent {
+    opacity: 1;
+}
+
+.workflow-card .corner-accent.tl {
+    top: 12px;
+    left: 12px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.workflow-node {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.workflow-node .animate-ping {
+    animation: ping-gold 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes ping-gold {
+    0% {
+        transform: scale(1);
+        opacity: 0.4;
+    }
+    75%, 100% {
+        transform: scale(1.8);
+        opacity: 0;
+    }
+}
+
+.workflow-step .workflow-node > div:first-child {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.workflow-step:hover .workflow-node > div:first-child {
+    transform: scale(1.1);
+    box-shadow: 0 0 40px rgba(201, 169, 110, 0.4);
+}
+
+/* Workflow card icon hover */
+.workflow-card .icon-container {
+    transition: all 0.5s ease;
+}
+
+.workflow-card:hover .icon-container {
+    background: #c9a96e;
+    border-color: #c9a96e;
+}
+
+.workflow-card:hover .icon-container svg {
+    color: #0a0a0a;
+}
+
