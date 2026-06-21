@@ -13,92 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ============================================
-    // Custom Cursor Follower
-    // ============================================
-    const cursor = document.createElement('div');
-    cursor.className = 'custom-cursor';
-    document.body.appendChild(cursor);
-
-    const cursorDot = document.createElement('div');
-    cursorDot.className = 'cursor-dot';
-    document.body.appendChild(cursorDot);
-
-    let mouseX = 0, mouseY = 0;
-    let cursorX = 0, cursorY = 0;
-    let dotX = 0, dotY = 0;
-
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
-
-    function animateCursor() {
-        cursorX += (mouseX - cursorX) * 0.15;
-        cursorY += (mouseY - cursorY) * 0.15;
-        dotX += (mouseX - dotX) * 0.5;
-        dotY += (mouseY - dotY) * 0.5;
-
-        cursor.style.left = cursorX + 'px';
-        cursor.style.top = cursorY + 'px';
-        cursorDot.style.left = dotX + 'px';
-        cursorDot.style.top = dotY + 'px';
-
-        requestAnimationFrame(animateCursor);
-    }
-
-    // Hide default cursor on desktop
-    if (window.innerWidth > 768) {
-        document.body.style.cursor = 'none';
-        animateCursor();
-
-        // Cursor hover effects on interactive elements
-        const interactiveElements = document.querySelectorAll('a, button, .interactive, input, textarea, select, .project-card, .tilt-card');
-        interactiveElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.classList.add('cursor-hover');
-            });
-            el.addEventListener('mouseleave', () => {
-                cursor.classList.remove('cursor-hover');
-            });
-        });
-    }
-
-    // ============================================
-    // Particle Cursor Trail
-    // ============================================
-    const particleContainer = document.createElement('div');
-    particleContainer.className = 'particle-container';
-    document.body.appendChild(particleContainer);
-
-    const particles = [];
-    const maxParticles = 20;
-
-    function createParticle(x, y) {
-        if (particles.length >= maxParticles) return;
-        
-        const particle = document.createElement('div');
-        particle.className = 'cursor-particle';
-        particle.style.left = x + 'px';
-        particle.style.top = y + 'px';
-        particleContainer.appendChild(particle);
-        particles.push(particle);
-
-        setTimeout(() => {
-            particle.remove();
-            particles.splice(particles.indexOf(particle), 1);
-        }, 1000);
-    }
-
-    let lastParticleTime = 0;
-    document.addEventListener('mousemove', (e) => {
-        const now = Date.now();
-        if (now - lastParticleTime > 30) {
-            createParticle(e.clientX, e.clientY);
-            lastParticleTime = now;
-        }
-    });
-
-    // ============================================
     // Navigation Scroll Effect
     // ============================================
     const navbar = document.getElementById('navbar');
@@ -267,7 +181,10 @@ document.addEventListener('DOMContentLoaded', function() {
         .to('.hero-title', {
             y: 0,
             duration: 1,
-            ease: 'power3.out'
+            ease: 'power3.out',
+            onComplete: () => {
+                document.querySelector('.hero-title-clip')?.classList.add('reveal-complete');
+            }
         }, '-=0.5')
         .to('.hero-tagline', {
             y: 0,
@@ -338,6 +255,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.hero-subtitle, .hero-title, .hero-tagline, .hero-cta').forEach(el => {
             el.style.transform = 'translateY(0)';
         });
+        document.querySelector('.hero-title-clip')?.classList.add('reveal-complete');
     }
 
     // ============================================
@@ -753,24 +671,24 @@ document.addEventListener('DOMContentLoaded', function() {
             
             let valid = true;
             
-            if (!email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+            if (email && email.required && !email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
                 email.style.borderColor = '#ef4444';
                 valid = false;
-            } else {
+            } else if (email) {
                 email.style.borderColor = '';
             }
             
-            if (firstname.value.trim() === '') {
+            if (firstname && firstname.value.trim() === '') {
                 firstname.style.borderColor = '#ef4444';
                 valid = false;
-            } else {
+            } else if (firstname) {
                 firstname.style.borderColor = '';
             }
             
-            if (lastname.value.trim() === '') {
+            if (lastname && lastname.required && lastname.value.trim() === '') {
                 lastname.style.borderColor = '#ef4444';
                 valid = false;
-            } else {
+            } else if (lastname) {
                 lastname.style.borderColor = '';
             }
             
@@ -817,6 +735,130 @@ document.addEventListener('DOMContentLoaded', function() {
         if (window.history.replaceState) {
             window.history.replaceState({}, document.title, window.location.pathname + '#contact');
         }
+    }
+
+    // ============================================
+    // Site-wide Lead Generation Tools
+    // ============================================
+    const leadModal = document.getElementById('lead-modal');
+    const leadFormView = document.getElementById('lead-form-view');
+    const calculatorView = document.getElementById('cost-calculator-view');
+    const leadTitle = document.getElementById('lead-modal-title');
+    const leadCopy = document.getElementById('lead-modal-copy');
+    const leadProjectType = document.getElementById('lead-project-type');
+
+    const leadContent = {
+        'site-visit': {
+            title: 'Book a Site Visit',
+            copy: 'Choose a convenient time for our team to understand your site and project requirements.',
+            type: 'Book Site Visit'
+        },
+        'free-quote': {
+            title: 'Get a Free Design Consultation',
+            copy: 'Tell us about your property and our interior team will contact you.',
+            type: 'Free Quote'
+        },
+        'exit-popup': {
+            title: 'Before You Leave',
+            copy: 'Get a free initial consultation and project estimate from our team.',
+            type: 'Exit Popup Enquiry'
+        }
+    };
+
+    function openLeadModal(type = 'free-quote') {
+        if (!leadModal) return;
+        const isCalculator = type === 'cost-calculator';
+        leadFormView.hidden = isCalculator;
+        calculatorView.hidden = !isCalculator;
+
+        if (!isCalculator) {
+            const content = leadContent[type] || leadContent['free-quote'];
+            leadTitle.textContent = content.title;
+            leadCopy.textContent = content.copy;
+            leadProjectType.value = content.type;
+        }
+
+        leadModal.classList.add('is-open');
+        leadModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLeadModal() {
+        if (!leadModal) return;
+        leadModal.classList.remove('is-open');
+        leadModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('[data-lead-modal]').forEach(button => {
+        button.addEventListener('click', () => openLeadModal(button.dataset.leadModal));
+    });
+
+    document.querySelectorAll('[data-close-lead-modal]').forEach(button => {
+        button.addEventListener('click', closeLeadModal);
+    });
+
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') closeLeadModal();
+    });
+
+    const calcType = document.getElementById('calc-type');
+    const calcArea = document.getElementById('calc-area');
+    const calcResult = document.getElementById('calc-result');
+
+    function updateCostEstimate() {
+        if (!calcType || !calcArea || !calcResult) return;
+        const rate = Number(calcType.value);
+        const area = Math.max(0, Number(calcArea.value));
+        calcResult.textContent = new Intl.NumberFormat('en-IN', {
+            style: 'currency',
+            currency: 'INR',
+            maximumFractionDigits: 0
+        }).format(rate * area);
+    }
+
+    calcType?.addEventListener('change', updateCostEstimate);
+    calcArea?.addEventListener('input', updateCostEstimate);
+    updateCostEstimate();
+
+    const homeCostType = document.getElementById('home-cost-type');
+    const homeCostArea = document.getElementById('home-cost-area');
+    const homeCostBudget = document.getElementById('home-cost-budget');
+    const homeCostResult = document.getElementById('home-cost-result');
+
+    function updateHomeCostEstimate() {
+        if (!homeCostType || !homeCostArea || !homeCostBudget || !homeCostResult) return;
+        const rate = Number(homeCostType.value);
+        const area = Math.max(0, Number(homeCostArea.value));
+        const multiplier = Number(homeCostBudget.value);
+        homeCostResult.textContent = new Intl.NumberFormat('en-IN', {
+            style: 'currency',
+            currency: 'INR',
+            maximumFractionDigits: 0
+        }).format(rate * area * multiplier);
+    }
+
+    [homeCostType, homeCostArea, homeCostBudget].forEach(field => {
+        field?.addEventListener(field.tagName === 'INPUT' ? 'input' : 'change', updateHomeCostEstimate);
+    });
+    updateHomeCostEstimate();
+
+    let exitPopupShown = sessionStorage.getItem('sabExitPopupShown') === '1';
+    document.addEventListener('mouseout', event => {
+        if (!exitPopupShown && event.clientY <= 0 && !event.relatedTarget) {
+            exitPopupShown = true;
+            sessionStorage.setItem('sabExitPopupShown', '1');
+            openLeadModal('exit-popup');
+        }
+    });
+
+    if (leadModal && !sessionStorage.getItem('sabOpeningConsultationShown')) {
+        window.setTimeout(() => {
+            if (!leadModal.classList.contains('is-open')) {
+                sessionStorage.setItem('sabOpeningConsultationShown', '1');
+                openLeadModal('free-quote');
+            }
+        }, 900);
     }
 
     // ============================================

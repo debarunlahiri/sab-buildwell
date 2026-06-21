@@ -14,7 +14,7 @@
                     Building Trust,<br>One <span class="text-sb-gold">Space</span> at a Time
                 </h1>
                 <p class="text-gray-300 text-lg max-w-xl">
-                    Since 2010, we have been transforming architectural visions into functional masterpieces across Delhi NCR.
+                    We have been transforming architectural visions into functional masterpieces across Delhi NCR.
                 </p>
             </div>
         </div>
@@ -37,7 +37,7 @@
                         Founded in 2010 in Ghaziabad, Uttar Pradesh, SAB Buildwell Projects began with a simple vision: to bridge the gap between ambitious architectural designs and flawless execution. What started as a small team of passionate interior designers has grown into a premier full-service turnkey execution firm.
                     </p>
                     <p>
-                        Over the past 15+ years, we have completed over 500 projects ranging from high-end corporate headquarters to luxury residential villas. Our commitment to premium craftsmanship, structural integrity, and absolute transparency has earned us the trust of clients across Delhi NCR.
+                        Over the past 5+ years, we have completed over 500 projects ranging from high-end corporate headquarters to luxury residential villas. Our commitment to premium craftsmanship, structural integrity, and absolute transparency has earned us the trust of clients across Delhi NCR.
                     </p>
                     <p>
                         Every project we undertake is a testament to our philosophy — <em class="text-sb-gold font-semibold">"Constructing Dreams. Building Trust."</em>
@@ -65,7 +65,7 @@
                     </div>
                 </div>
                 <div class="absolute -bottom-6 -right-6 bg-sb-gold text-sb-black p-6 shadow-2xl">
-                    <p class="font-playfair text-3xl font-bold">15+</p>
+                    <p class="font-playfair text-3xl font-bold">5+</p>
                     <p class="text-xs uppercase tracking-widest mt-1">Years of Excellence</p>
                 </div>
             </div>
@@ -170,7 +170,7 @@
                 </div>
                 <h3 class="font-playfair text-xl font-bold mb-1">Director</h3>
                 <p class="text-sb-gold text-sm uppercase tracking-widest mb-3">Founder & CEO</p>
-                <p class="text-gray-400 text-sm max-w-xs mx-auto">15+ years of experience in premium interior design and turnkey project management.</p>
+                <p class="text-gray-400 text-sm max-w-xs mx-auto">5+ years of experience in premium interior design and turnkey project management.</p>
             </div>
             
             <div class="group text-center scroll-reveal">
